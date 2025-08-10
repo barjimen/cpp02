@@ -6,7 +6,7 @@
 /*   By: barjimen <barjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 19:09:10 by barjimen          #+#    #+#             */
-/*   Updated: 2025/08/09 21:48:31 by barjimen         ###   ########.fr       */
+/*   Updated: 2025/08/10 18:06:47 by barjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,4 +99,109 @@ std::ostream& operator<<(std::ostream& out, const Fixed& fixed)
 {
     out << fixed.toFloat();
     return out;
+}
+
+
+//02 new methods
+ //Comparación
+ bool Fixed::operator>(const Fixed& other) const
+ {
+    return _value > other._bits;
+ }
+
+  bool Fixed::operator<(const Fixed& other) const
+ {
+    return _value < other._bits;
+ }
+
+  bool Fixed::operator>=(const Fixed& other) const
+ {
+    return _value >= other._bits;
+ }
+ 
+  bool Fixed::operator<=(const Fixed& other) const
+ {
+    return _value <= other._bits;
+ }
+
+  bool Fixed::operator==(const Fixed& other) const
+ {
+    return _value == other._bits;
+ }
+ 
+   bool Fixed::operator!=(const Fixed& other) const
+ {
+    return _value != other._bits;
+ }
+
+ //Aritmética
+
+ Fixed Fixed::operator+(const Fixed& other) const
+{
+    return Fixed(this->toFloat() + other.toFloat());
+}
+
+Fixed Fixed::operator-(const Fixed& other) const
+{
+    return Fixed(this->toFloat() - other.toFloat());
+}
+
+Fixed Fixed::operator*(const Fixed& other) const
+{
+    return Fixed(this->toFloat() * other.toFloat());
+}
+
+Fixed Fixed::operator/(const Fixed& other) const
+{
+    return Fixed(this->toFloat() / other.toFloat());
+}
+
+// ++ y --
+
+Fixed& Fixed::operator++()
+{
+    _value++;
+    return *this;
+}
+
+Fixed Fixed::operator++(int)
+{
+    Fixed temp(*this);
+    _value++;
+    return temp;
+}
+
+Fixed& Fixed::operator--()
+{
+    _value--;
+    return *this;
+}
+
+Fixed Fixed::operator--(int)
+{
+    Fixed temp(*this);
+    _value--;
+    return temp;
+}
+
+//Min / Max
+
+Fixed& Fixed::min(Fixed& a, Fixed& b)
+{
+    return (a < b) ? a : b;
+}
+
+const Fixed& Fixed::min(const Fixed& a, const Fixed& b)
+{
+    return (a < b) ? a : b;
+}
+
+Fixed& Fixed::max(Fixed& a, Fixed& b)
+{
+    return (a > b) ? a : b;
+}
+
+const Fixed& Fixed::max(const Fixed& a, const Fixed& b)
+{
+    return (a > b) ? a : b;
 }
