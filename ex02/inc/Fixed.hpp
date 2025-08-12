@@ -6,7 +6,7 @@
 /*   By: barjimen <barjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 19:08:45 by barjimen          #+#    #+#             */
-/*   Updated: 2025/08/10 18:06:36 by barjimen         ###   ########.fr       */
+/*   Updated: 2025/08/12 18:58:42 by barjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,19 @@ private:
     int _value;
     static const int _bits = 8;
 public:
-//Forma canónica ortodoxa
+//Orthodox Canonical Form
     Fixed();
-    //Constructor copia
+    //Constructor copy
     Fixed(const Fixed& other);
-    //Asignación
+    //Copy assignment
     Fixed& operator=(const Fixed& other);
     ~Fixed();
 
-    //Nuevos contructore requeridos por el subject
+    //New constructor
     Fixed(const int intValue);
     Fixed(const float floatValue);
     
-    //Conversión
+    //Conversion
     float toFloat(void) const;
     float toInt(void) const;
 
@@ -38,20 +38,19 @@ public:
     int getRawBits(void) const;
     void setRawBits(int const raw);
 
-    //Comparadores:
-    //1. Comparación
-    bool operator>(const Fixed& other) const;
-    bool operator<(const Fixed& other) const;
-    bool operator>=(const Fixed& other) const;
-    bool operator<=(const Fixed& other) const;
-    bool operator==(const Fixed& other) const;
-    bool operator!=(const Fixed& other) const;
-    //2. Aritmeticos
-    Fixed operator+(const Fixed& other) const;
-    Fixed operator-(const Fixed& other) const;
-    Fixed operator*(const Fixed& other) const;
-    Fixed operator/(const Fixed& other) const;
-    //3. Incrementación
+    //1. comparison
+    bool operator>(const Fixed &other) const;
+    bool operator<(const Fixed &other) const;
+    bool operator>=(const Fixed &other) const;
+    bool operator<=(const Fixed &other) const;
+    bool operator==(const Fixed &other) const;
+    bool operator!=(const Fixed &other) const;
+    //2. arithmetic
+    Fixed operator+(const Fixed &other) const;
+    Fixed operator-(const Fixed &other) const;
+    Fixed operator*(const Fixed &other) const;
+    Fixed operator/(const Fixed &other) const;
+    //3. Increase
     Fixed& operator++();
     Fixed operator++(int);
     Fixed& operator--();

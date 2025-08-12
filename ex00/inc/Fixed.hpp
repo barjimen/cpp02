@@ -6,7 +6,7 @@
 /*   By: barjimen <barjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 19:08:45 by barjimen          #+#    #+#             */
-/*   Updated: 2025/08/09 20:58:51 by barjimen         ###   ########.fr       */
+/*   Updated: 2025/08/12 18:52:42 by barjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,16 @@ private:
     int _value;
     static const int _bits = 8;
 public:
+//Orthodox Canonical Form
+    //Create an object
     Fixed();
-    //Constructor copia
-    Fixed(const Fixed& other);
-    //Asignación
-    Fixed& operator=(const Fixed& other);
+    //Constructor copy, create an objetc with data of another
+    Fixed(const Fixed &other);
+    //copy assignment, replace the content with other content
+    Fixed &operator=(const Fixed &other);
     ~Fixed();
 
-    //Required methods
+    //Required functions
     int getRawBits(void) const;
     void setRawBits(int const raw);
 };

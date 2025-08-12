@@ -6,7 +6,7 @@
 /*   By: barjimen <barjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 19:09:10 by barjimen          #+#    #+#             */
-/*   Updated: 2025/08/09 21:48:31 by barjimen         ###   ########.fr       */
+/*   Updated: 2025/08/12 18:57:24 by barjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,35 +56,35 @@ void Fixed::setRawBits(int const raw)
 //Whitout this the compilator didnt know if _valu is a parameter or an atributte
 
 //------------------------------ EX01 ------------------------------------------
-//Constructor de int
+//Constructor of int
 Fixed::Fixed(const int intValue)
 {
     std::cout << "Int constructor called" << std::endl;
     _value = intValue << _bits;
 }
-//En el caso de int:
-//Valor int: 10
-//Multiplicamos por 256  → 10 * 256 = 2560
-//Binario (16 bits): 0000101000000000
+//int:
+//Value int: 10
+//Multiply por 256  → 10 * 256 = 2560
+//Binary (16 bits): 0000101000000000
 
 //_value = 2560
 
-//Constructor de float
+//Constructor of float
 Fixed::Fixed(const float floatValue)
 {
     std::cout << "Float constructor called" << std::endl;
-    _value = roundf(floatValue * (1 << _bits)); //Redondeamos con la función permitida
+    _value = roundf(floatValue * (1 << _bits)); //Rounded
 }
-// En este caso funcionaria así:
-//Si le dieramos de valor float: 42.42
-//Multiplicamos por 256  → 42.42 * 256 ≈ 10859.52
-//Redondeamos → 10860
-//Binario: 0010101000111100
-// Entonces value es:
+// In this case:
+//we give float: 42.42
+//Multiply 256  → 42.42 * 256 ≈ 10859.52
+//rounded → 10860
+//Binary: 0010101000111100
+//value is:
 //_value = 10860
 
-//Ahora empezamos con las funciones de conversión
-//Aqui hacemos lo mismo para dividirlo y volver a tener el mismo valor
+//Converst functions:
+//We do the same but we / 256
 float Fixed::toFloat(void) const
 {
     return (float)_value / (1 << _bits);
@@ -92,7 +92,7 @@ float Fixed::toFloat(void) const
 
 float Fixed::toInt(void) const
 {
-    return _value >> _bits; //Dividimos por 256
+    return _value >> _bits; //Divided by 256
 }
 
 std::ostream& operator<<(std::ostream& out, const Fixed& fixed)

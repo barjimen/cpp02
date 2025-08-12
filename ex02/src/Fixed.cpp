@@ -6,7 +6,7 @@
 /*   By: barjimen <barjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 19:09:10 by barjimen          #+#    #+#             */
-/*   Updated: 2025/08/10 18:06:47 by barjimen         ###   ########.fr       */
+/*   Updated: 2025/08/12 18:59:28 by barjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,29 +62,12 @@ Fixed::Fixed(const int intValue)
     std::cout << "Int constructor called" << std::endl;
     _value = intValue << _bits;
 }
-//En el caso de int:
-//Valor int: 10
-//Multiplicamos por 256  → 10 * 256 = 2560
-//Binario (16 bits): 0000101000000000
 
-//_value = 2560
-
-//Constructor de float
 Fixed::Fixed(const float floatValue)
 {
     std::cout << "Float constructor called" << std::endl;
-    _value = roundf(floatValue * (1 << _bits)); //Redondeamos con la función permitida
+    _value = roundf(floatValue * (1 << _bits));
 }
-// En este caso funcionaria así:
-//Si le dieramos de valor float: 42.42
-//Multiplicamos por 256  → 42.42 * 256 ≈ 10859.52
-//Redondeamos → 10860
-//Binario: 0010101000111100
-// Entonces value es:
-//_value = 10860
-
-//Ahora empezamos con las funciones de conversión
-//Aqui hacemos lo mismo para dividirlo y volver a tener el mismo valor
 float Fixed::toFloat(void) const
 {
     return (float)_value / (1 << _bits);
@@ -92,7 +75,7 @@ float Fixed::toFloat(void) const
 
 float Fixed::toInt(void) const
 {
-    return _value >> _bits; //Dividimos por 256
+    return _value >> _bits;
 }
 
 std::ostream& operator<<(std::ostream& out, const Fixed& fixed)
@@ -103,7 +86,7 @@ std::ostream& operator<<(std::ostream& out, const Fixed& fixed)
 
 
 //02 new methods
- //Comparación
+ //comparison
  bool Fixed::operator>(const Fixed& other) const
  {
     return _value > other._bits;
@@ -134,7 +117,7 @@ std::ostream& operator<<(std::ostream& out, const Fixed& fixed)
     return _value != other._bits;
  }
 
- //Aritmética
+ //arithmetic
 
  Fixed Fixed::operator+(const Fixed& other) const
 {
